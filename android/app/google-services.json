@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "763907694663",
+    "project_id": "mybekkar-68202",
+    "storage_bucket": "mybekkar-68202.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763907694663:android:95e08677d451e57d05d162",
+        "android_client_info": {
+          "package_name": "com.example.mybekkar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGL44wTkefmAXqK2OFRM8RqwKe6iW6Ock"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
