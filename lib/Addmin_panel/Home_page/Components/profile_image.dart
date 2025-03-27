@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mybekkar/User_panel/screens/Profile/Components/profile_image_edit.dart';
 import 'package:stacked/stacked.dart';
 
-class ProfileImage extends StatelessWidget {
-  const ProfileImage({super.key});
+class ProfileImagee extends StatelessWidget {
+  const ProfileImagee({super.key});
 
   @override
   Widget build(BuildContext context) {

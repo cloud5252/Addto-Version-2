@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mybekkar/Addmin_panel/Home_page/Components/My_Offer_collection.dart';
-import 'package:mybekkar/Addmin_panel/Home_page/Components/My_TabBar.dart';
-import 'package:mybekkar/Addmin_panel/Home_page/Components/Myfood_tile.dart';
-import 'package:mybekkar/Addmin_panel/Home_page/Components/my_drawer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/homr_view_model.dart';
-import 'package:mybekkar/Locator/app.locator.dart';
 import 'package:mybekkar/User_panel/screens/Item_view/Cart_view.dart';
-import 'package:mybekkar/User_panel/screens/Service/Saller.dart';
-import '../Service/Food.dart';
+import '../Fire_base_service/auth_Food_Models.dart';
+import 'Components/My_Offer_collection.dart';
 import 'Components/My_Sliver_appbar.dart';
+import 'Components/My_TabBar.dart';
+import 'Components/Myfood_tile.dart';
+import 'Components/my_drawer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -34,28 +33,50 @@ class _HomeViewState extends State<HomeView>
     super.dispose();
   }
 
-  List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullMenu) {
-    return fullMenu.where((food) => food.category == category).toList();
+  Future<List<Foodd>> fetchFoodByCategory(FoodCategory category) async {
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('foodcategory')
+        .where('Categories', arrayContains: category.toString().split('.').last)
+        .get();
+
+    return snapshot.docs.map((doc) {
+      return Foodd.fromFirestore(doc);
+    }).toList();
   }
 
-  List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
+  List<Widget> getFoodInThisCategory() {
     return FoodCategory.values.map((category) {
-      List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
+      return FutureBuilder<List<Foodd>>(
+        future: fetchFoodByCategory(category),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return const Center(child: Text('Error fetching data'));
+          }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(
+                child: Text('No items available for this category.'));
+          }
 
-      return ListView.builder(
-        itemCount: categoryMenu.length,
-        physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
-        itemBuilder: (context, index) {
-          final food = categoryMenu[index];
-          return MyFoodTile(
-            food: food,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CartView(food: food),
-              ),
-            ),
+          List<Foodd> categoryMenu = snapshot.data!;
+
+          return ListView.builder(
+            itemCount: categoryMenu.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              final food = categoryMenu[index];
+              return MyFoodTilee(
+                food: food,
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartView(food: food),
+                  ),
+                ),
+              );
+            },
           );
         },
       );
@@ -68,7 +89,7 @@ class _HomeViewState extends State<HomeView>
       drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Panda",
           style: TextStyle(
             color: Colors.white,
@@ -79,14 +100,14 @@ class _HomeViewState extends State<HomeView>
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
             );
           },
         ),
-        toolbarHeight: 30.0,
+        toolbarHeight: 56.0,
         backgroundColor: Colors.blue.shade200,
       ),
       backgroundColor: Colors.blue.shade200,
@@ -94,22 +115,21 @@ class _HomeViewState extends State<HomeView>
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MYSeliverAppbar(
             title: MyTabbar(tabBarcontroller: _tabController),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: MyNewCollection(text: "New Vintage Collection"),
                 ),
-
-                // const MyDescriptionbox(),
               ],
             ),
           ),
         ],
         body: TabBarView(
           controller: _tabController,
-          children: getFoodInThisCategory(locator<Saller>().menu),
+          children:
+              getFoodInThisCategory(), // Display category-wise food data here
         ),
       ),
     );

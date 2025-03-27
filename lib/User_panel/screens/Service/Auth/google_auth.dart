@@ -10,7 +10,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/home_view.dart';
-import 'package:mybekkar/User_panel/screens/Fire_base_service/Models.dart';
+import 'package:mybekkar/User_panel/screens/Fire_base_service/auth_User_Models.dart';
 import 'package:mybekkar/User_panel/screens/Fire_base_service/helper_dialogs.dart';
 import 'package:mybekkar/User_panel/screens/register/register_view_model.dart';
 

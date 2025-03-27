@@ -3,13 +3,13 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/homr_view_model.dart';
 import 'package:stacked/stacked.dart';
 
-class MyRatng extends StatelessWidget {
-  const MyRatng({super.key});
+class MyRatngg extends StatelessWidget {
+  const MyRatngg({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomrViewModeladdmin>.nonReactive(
-      viewModelBuilder: () => HomrViewModeladdmin(),
+    return ViewModelBuilder<HomrViewModeladdminn>.nonReactive(
+      viewModelBuilder: () => HomrViewModeladdminn(),
       builder: (context, viewmodel, child) {
         return RatingBar.builder(
           initialRating: 3,

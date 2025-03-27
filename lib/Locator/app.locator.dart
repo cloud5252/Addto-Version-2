@@ -31,7 +31,7 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => Saller());
   locator.registerLazySingleton(() => AddToViewModel());
-  locator.registerLazySingleton(() => HomrViewModeladdmin());
+  locator.registerLazySingleton(() => HomrViewModeladdminn());
   locator.registerLazySingleton(() => LoginRegisterViewModel());
   locator.registerLazySingleton(() => AuthServices());
   locator.registerLazySingleton(() => GoogleAuth());

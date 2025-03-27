@@ -4,7 +4,6 @@ import 'package:mybekkar/Addmin_panel/Home_page/Components/My_TabBar.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/Components/Myfood_tile.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/Components/my_drawer.dart';
 import 'package:mybekkar/Locator/app.locator.dart';
-import 'package:mybekkar/User_panel/screens/Item_view/Cart_view.dart';
 import 'package:mybekkar/User_panel/screens/Service/Food.dart';
 import 'package:mybekkar/User_panel/screens/Service/Saller.dart';
 import 'Components/My_Sliver_appbar.dart';
@@ -48,12 +47,14 @@ class _HomeViewaddminState extends State<HomeViewaddmin>
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           final food = categoryMenu[index];
-          return MyFoodTile(
+          return MyFoodTilee(
             food: food,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CartView(food: food),
+                builder: (context) {
+                  return SizedBox();
+                },
               ),
             ),
           );
@@ -65,7 +66,7 @@ class _HomeViewaddminState extends State<HomeViewaddmin>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: MyDrawerr(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -92,14 +93,14 @@ class _HomeViewaddminState extends State<HomeViewaddmin>
       backgroundColor: Colors.blue.shade200,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          MYSeliverAppbar(
-            title: MyTabbar(tabBarcontroller: _tabController),
+          MYSeliverAppbarr(
+            title: MyTabbarr(tabBarcontroller: _tabController),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: MyNewCollection(text: "New Vintage Collection"),
+                  child: MyNewCollectionn(text: "New Vintage Collection"),
                 ),
 
                 // const MyDescriptionbox(),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mybekkar/User_panel/screens/Service/Food.dart';
 
-class MyFoodTile extends StatelessWidget {
+class MyFoodTilee extends StatelessWidget {
   final Food food;
   final void Function()? onTap;
-  const MyFoodTile({
+  const MyFoodTilee({
     super.key,
     required this.food,
     required this.onTap,

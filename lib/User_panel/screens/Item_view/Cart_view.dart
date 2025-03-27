@@ -1,16 +1,67 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:mybekkar/User_panel/screens/Item_view/Cart_view_model.dart';
-import 'package:mybekkar/User_panel/screens/Service/Food.dart';
+import '../Fire_base_service/auth_Food_Models.dart';
 import 'Components/My_button.dart';
 
 class CartView extends StatelessWidget {
-  final Food food;
+  final Foodd food;
 
   const CartView({super.key, required this.food});
 
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    final Foodd foood = Foodd(
+      foodId: food.foodId,
+      foodImage: food.foodImage,
+      foodName: food.foodName,
+      createAt: DateTime.now(),
+      updataAt: DateTime.now(),
+      category: food.category,
+      Price: food.Price,
+      description: food.description,
+      foodquentity: food.foodquentity,
+      foodprice: double.parse(food.foodprice.toString()),
+    );
+    Future<void> Addtocartexisting(
+        {required String uid, int quantityincreament = 1}) async {
+      final DocumentReference documentReference = FirebaseFirestore.instance
+          .collection('cart')
+          .doc(uid)
+          .collection('cartOrders')
+          .doc(foood.foodId.toString());
+
+      DocumentSnapshot snapshot = await documentReference.get();
+
+      if (snapshot.exists) {
+        int currentquentity = snapshot['foodquantity'];
+        int updataquantity = currentquentity + quantityincreament;
+        double totalprice = double.parse(foood.Price) * updataquantity;
+
+        await documentReference.update({
+          'foodquantity': updataquantity,
+          'foodprice': totalprice,
+        });
+      } else {
+        await FirebaseFirestore.instance.collection('cart').doc(uid).set(
+          {
+            'uid': uid,
+            'createAt': DateTime.now(),
+          },
+        );
+        await documentReference.set({
+          ...foood.toMap(),
+          'foodquantity': quantityincreament,
+          'foodprice': double.parse(foood.Price),
+        });
+        print('product added');
+      }
+    }
+
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
@@ -24,9 +75,9 @@ class CartView extends StatelessWidget {
                     Container(
                       height: 300,
                       width: 360,
-                      child: Image.asset(
+                      child: Image.network(
                         filterQuality: FilterQuality.high,
-                        food.imagpath,
+                        food.foodImage,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -52,7 +103,7 @@ class CartView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  food.name,
+                                  food.foodName,
                                   style: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
@@ -85,7 +136,7 @@ class CartView extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '\$${food.price}',
+                            '\$${food.Price}',
                             style: const TextStyle(
                               fontSize: 16,
                               color: Colors.white,
@@ -134,8 +185,8 @@ class CartView extends StatelessWidget {
                 right: 5,
                 child: MyButtons(
                   text: "Add To Cart",
-                  onTap: () {
-                    viewModel.addToCart(food, context);
+                  onTap: () async {
+                    await Addtocartexisting(uid: user!.uid);
                   },
                 ),
               ),

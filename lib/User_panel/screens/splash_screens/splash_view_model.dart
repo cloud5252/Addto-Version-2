@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mybekkar/Locator/app.locator.dart';
 import 'package:mybekkar/Locator/app.router.dart';
+import 'package:mybekkar/User_panel/screens/Home_page/home_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../ADDMIN_VIEW/Addmin_view.dart';
 import '../Fire_base_service/addmin&userdata.dart';
-import '../Home_page/home_view.dart';
 import '../Welcome/wellcome_view.dart';
 
 class SplashViewModel extends BaseViewModel {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyAppbar extends StatelessWidget {
+class MyAppbarr extends StatelessWidget {
   final String text;
-  const MyAppbar({required this.text, super.key});
+  const MyAppbarr({required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -65,6 +65,18 @@ class MyDrawer extends StatelessWidget {
                 },
               ),
               MyDrawerTile(
+                text: 'Products',
+                icon: Icons.production_quantity_limits,
+                ontep: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileView()),
+                  );
+                },
+              ),
+              MyDrawerTile(
                 text: "Orders",
                 quantity: viewmodel.usercart1.fold(0, (sum, item) {
                   return sum + item.quantitty;
@@ -90,6 +102,18 @@ class MyDrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const CartViewPage()),
+                  );
+                },
+              ),
+              MyDrawerTile(
+                text: 'Contects',
+                icon: Icons.help,
+                ontep: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileView()),
                   );
                 },
               ),

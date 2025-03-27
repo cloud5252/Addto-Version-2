@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MYSeliverAppbar extends StatelessWidget {
+class MYSeliverAppbarr extends StatelessWidget {
   final Widget child;
   final Widget title;
-  const MYSeliverAppbar({
+  const MYSeliverAppbarr({
     super.key,
     required this.child,
     required this.title,

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/homr_view_model.dart';
 import 'package:stacked/stacked.dart';
 
-class MyPlusAdd extends StatelessWidget {
+class MyPlusAddd extends StatelessWidget {
   final Function()? onTap;
-  const MyPlusAdd({required this.onTap, super.key});
+  const MyPlusAddd({required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomrViewModeladdmin>.reactive(
-      viewModelBuilder: () => HomrViewModeladdmin(),
+    return ViewModelBuilder<HomrViewModeladdminn>.reactive(
+      viewModelBuilder: () => HomrViewModeladdminn(),
       builder: (context, viewmodel, child) {
         return GestureDetector(
           onTap: onTap,

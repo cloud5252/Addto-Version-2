@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, non_constant_identifier_names
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mybekkar/Locator/app.locator.dart';
 import 'package:mybekkar/User_panel/screens/Service/Food.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mybekkar/Addmin_panel/Home_page/homr_view_model.dart';
 
-class MyTabbar extends StatelessWidget {
+class MyTabbarr extends StatelessWidget {
   final TabController tabBarcontroller;
-  const MyTabbar({super.key, required this.tabBarcontroller});
+  const MyTabbarr({super.key, required this.tabBarcontroller});
 
   List<Tab> _buildCategoryTabs() {
     return FoodCategory.values.map((Category) {

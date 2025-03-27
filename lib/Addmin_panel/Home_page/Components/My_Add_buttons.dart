@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class MyButtonss extends StatefulWidget {
+class MyButtonsss extends StatefulWidget {
   final Function()? onTap;
   final String text;
 
-  const MyButtonss({super.key, required this.onTap, required this.text});
+  const MyButtonsss({super.key, required this.onTap, required this.text});
 
   @override
-  _MyButtonssState createState() => _MyButtonssState();
+  _MyButtonsssState createState() => _MyButtonsssState();
 }
 
-class _MyButtonssState extends State<MyButtonss> {
+class _MyButtonsssState extends State<MyButtonsss> {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(

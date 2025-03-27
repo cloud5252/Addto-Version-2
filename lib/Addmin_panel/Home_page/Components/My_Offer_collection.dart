@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'My_Add_buttons.dart';
 
-class MyNewCollection extends StatelessWidget {
+class MyNewCollectionn extends StatelessWidget {
   final String text;
 
-  const MyNewCollection({
+  const MyNewCollectionn({
     super.key,
     required this.text,
   });
@@ -73,7 +73,7 @@ class MyNewCollection extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: MyButtonss(
+                      child: MyButtonsss(
                         text: "Explore",
                         onTap: () {},
                       ),

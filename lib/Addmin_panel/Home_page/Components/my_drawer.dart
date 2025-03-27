@@ -11,8 +11,8 @@ import 'package:mybekkar/User_panel/screens/Wish_list/wishlist_view.dart';
 import 'package:stacked/stacked.dart';
 import '../../../Locator/app.locator.dart';
 
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+class MyDrawerr extends StatelessWidget {
+  const MyDrawerr({super.key});
 
   @override
   Widget build(BuildContext context) {

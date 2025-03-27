@@ -6,7 +6,7 @@ import 'package:mybekkar/User_panel/screens/Service/Saller.dart';
 import 'package:stacked/stacked.dart';
 import '../../Locator/app.locator.dart';
 
-class HomrViewModeladdmin extends BaseViewModel {
+class HomrViewModeladdminn extends BaseViewModel {
   final junaid = locator<AuthServices>();
   final imager = locator<profileImageEditModel>();
   void addToCart1(Food food, BuildContext context) {

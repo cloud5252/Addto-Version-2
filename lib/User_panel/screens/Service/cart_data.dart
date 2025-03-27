@@ -1,4 +1,4 @@
-import 'package:mybekkar/User_panel/screens/Service/Food.dart';
+import 'Food.dart';
 
 class CartItem {
   Food food;

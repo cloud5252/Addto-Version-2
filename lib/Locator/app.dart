@@ -20,7 +20,7 @@ import '../User_panel/screens/Profile/Components/profile_image_edit.dart';
     LazySingleton(classType: Saller),
     LazySingleton(classType: AddToViewModel),
     LazySingleton(classType: GoogleAuth),
-    LazySingleton(classType: HomrViewModeladdmin),
+    LazySingleton(classType: HomrViewModeladdminn),
     LazySingleton(classType: LoginRegisterViewModel),
     LazySingleton(classType: AuthServices),
     LazySingleton(classType: profileImageEditModel),

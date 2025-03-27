@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mybekkar/Locator/app.locator.dart';
+import 'package:mybekkar/User_panel/screens/Home_page/home_view.dart';
 import 'package:stacked/stacked.dart';
 
 import '../ADDMIN_VIEW/Addmin_view.dart';
 import '../Fire_base_service/addmin&userdata.dart';
 import '../Fire_base_service/auth_service.dart';
-import '../Home_page/home_view.dart';
 
 class SigninViewModel extends BaseViewModel {
   final emailController = TextEditingController();
